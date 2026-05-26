@@ -1,0 +1,545 @@
+{
+  "256": {
+    "officialId": 4028,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4028.jpg",
+    "questionText": "У цій ситуації рух дозволено:..."
+  },
+  "265": {
+    "officialId": 4017,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4017.jpg",
+    "questionText": "Звуковий сигнал, який додатково увімкнений до сигн..."
+  },
+  "267": {
+    "officialId": 4016,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4016.jpg",
+    "questionText": "Чи дозволено Вам рух у напрямку, вказаному стрілко..."
+  },
+  "268": {
+    "officialId": 4008,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4008.jpg",
+    "questionText": "Чи дозволено Вам (водію автомобіля) повернути прав...",
+    "score": 0.7359213250517599,
+    "method": "fuzzy"
+  },
+  "273": {
+    "officialId": 4014,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4014.jpg",
+    "questionText": "У яких напрямках дозволено рух у даній ситуації?..."
+  },
+  "275": {
+    "officialId": 5142,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5142.jpg",
+    "questionText": "Що вважається безпечною дистанцією?..."
+  },
+  "276": {
+    "officialId": 4013,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4013.jpg",
+    "questionText": "Чи дозволено Вам повернути ліворуч у даній ситуаці..."
+  },
+  "278": {
+    "officialId": 4010,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4010.jpg",
+    "questionText": "Чи дозволено Вам (водію автомобіля) рух у даній си...",
+    "score": 0.6768518518518518,
+    "method": "fuzzy"
+  },
+  "279": {
+    "officialId": 4960,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4960.jpg",
+    "questionText": "Чи повинен водій автомобіля, повертаючи праворуч, ..."
+  },
+  "280": {
+    "officialId": 4010,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4010.jpg",
+    "questionText": "Чи дозволено Вам (водію автомобіля) рух у даній си...",
+    "score": 0.6768518518518518,
+    "method": "fuzzy"
+  },
+  "281": {
+    "officialId": 4009,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4009.jpg",
+    "questionText": "Кому дозволено рух у даній ситуації?..."
+  },
+  "282": {
+    "officialId": 4008,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4008.jpg",
+    "questionText": "Чи дозволено Вам (водію автомобіля) повернути прав...",
+    "score": 0.7359213250517599,
+    "method": "fuzzy"
+  },
+  "284": {
+    "officialId": 4007,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4007.jpg",
+    "questionText": "Ви правильно виконали поворот праворуч у цій ситуа..."
+  },
+  "348": {
+    "officialId": 4372,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4372.jpg",
+    "questionText": "Який попереджувальний сигнал вмикається під час ру..."
+  },
+  "370": {
+    "officialId": 4372,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4372.jpg",
+    "questionText": "Який попереджувальний сигнал вмикається на транспо..."
+  },
+  "442": {
+    "officialId": 4496,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4496.jpg",
+    "questionText": "Чи дозволено рух заднім ходом у тунелях?...",
+    "score": 0.95,
+    "method": "contains"
+  },
+  "465": {
+    "officialId": 5674,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5674.jpg",
+    "questionText": "Який з водіїв правильно зайняв смугу перед зупинко...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "512": {
+    "officialId": 4351,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4351.jpg",
+    "questionText": "Яку максимальну швидкість руху встановлено в насел..."
+  },
+  "519": {
+    "officialId": 4052,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4052.jpg",
+    "questionText": "З якою максимальною швидкістю дозволено рух у житл..."
+  },
+  "531": {
+    "officialId": 4052,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4052.jpg",
+    "questionText": "З якою максимальною швидкістю дозволено рух водієв..."
+  },
+  "535": {
+    "officialId": 5153,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5153.jpg",
+    "questionText": "Що вважається безпечним інтервалом?..."
+  },
+  "561": {
+    "officialId": 4052,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4052.jpg",
+    "questionText": "З якою максимальною швидкістю дозволено буксируван..."
+  },
+  "580": {
+    "officialId": 5703,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5703.jpg",
+    "questionText": "У яких випадках за допомогою дорожніх знаків вводя...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "586": {
+    "officialId": 5152,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5152.jpg",
+    "questionText": "Водій якого автомобіля має перевагу на цій ділянці..."
+  },
+  "587": {
+    "officialId": 5143,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5143.jpg",
+    "questionText": "Чи може водій синього автомобіля продовжити рух бе..."
+  },
+  "623": {
+    "officialId": 5145,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5145.jpg",
+    "questionText": "Чи може водій виконати обгін після проїзду цих зна..."
+  },
+  "625": {
+    "officialId": 5135,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5135.jpg",
+    "questionText": "Чи дозволено обгін у даній ситуації?..."
+  },
+  "630": {
+    "officialId": 5165,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5165.jpg",
+    "questionText": "Чи дозволено водієві обгін у цьому місці?..."
+  },
+  "631": {
+    "officialId": 4970,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4970.jpg",
+    "questionText": "Чи дозволено водієві червоного автомобіля виконати..."
+  },
+  "635": {
+    "officialId": 5137,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5137.jpg",
+    "questionText": "Чи дозволено водієві зеленого автомобіля виконати ...",
+    "score": 0.83,
+    "method": "fuzzy"
+  },
+  "697": {
+    "officialId": 4796,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4796.jpg",
+    "questionText": "Чи дозволено водієві автомобіля зупинитися в цьому...",
+    "score": 0.8228571428571428,
+    "method": "fuzzy"
+  },
+  "707": {
+    "officialId": 4510,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4510.jpg",
+    "questionText": "Хто з водіїв порушив Правила дорожнього руху, зупи..."
+  },
+  "761": {
+    "officialId": 4569,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4569.jpg",
+    "questionText": "Чи повинен водій автомобіля дати дорогу велосипеди..."
+  },
+  "769": {
+    "officialId": 5138,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5138.jpg",
+    "questionText": "Чи дозволено водієві білого автомобіля виїхати на ..."
+  },
+  "780": {
+    "officialId": 4975,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4975.jpg",
+    "questionText": "Повертаючи ліворуч на перехресті, водій синього ав..."
+  },
+  "802": {
+    "officialId": 4591,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4591.jpg",
+    "questionText": "Як повинен вчинити водій синього автомобіля, який ..."
+  },
+  "819": {
+    "officialId": 4609,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4609.jpg",
+    "questionText": "По якій траєкторії водієві автомобіля дозволено по...",
+    "score": 0.79,
+    "method": "fuzzy"
+  },
+  "820": {
+    "officialId": 4573,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4573.jpg",
+    "questionText": "По якій траєкторії повинен рухатися водій білого а..."
+  },
+  "824": {
+    "officialId": 4570,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4570.jpg",
+    "questionText": "Хто з водіїв повинен дати дорогу в даній ситуації?...",
+    "score": 0.7142857142857144,
+    "method": "fuzzy"
+  },
+  "837": {
+    "officialId": 4655,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4655.jpg",
+    "questionText": "Яких заходів повинні вживати водії, проїжджаючи по..."
+  },
+  "838": {
+    "officialId": 4585,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4585.jpg",
+    "questionText": "Як повинен вчинити водій автомобіля, якщо автобус ..."
+  },
+  "846": {
+    "officialId": 4584,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4584.jpg",
+    "questionText": "Як повинен вчинити в даній ситуації водій автомобі..."
+  },
+  "895": {
+    "officialId": 5582,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5582.jpg",
+    "questionText": "Чи дозволено в цій ситуації рух через переїзд у дв...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "1058": {
+    "officialId": 4863,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4863.jpg",
+    "questionText": "Чи дозволяє дана дорожня розмітка виконати обгін т...",
+    "score": 0.8166666666666667,
+    "method": "fuzzy"
+  },
+  "1070": {
+    "officialId": 3887,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_3887.jpg",
+    "questionText": "Недостатньою видимістю вважається:..."
+  },
+  "1241": {
+    "officialId": 3906,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_3906.jpg",
+    "questionText": "З якого віку надається право на керування категорі..."
+  },
+  "1741": {
+    "officialId": 4776,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4776.jpg",
+    "questionText": "Чи повинні Ви під час руху прямо дати дорогу мотоц..."
+  },
+  "2043": {
+    "officialId": 4560,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4560.jpg",
+    "questionText": "Яка черговість проїзду транспортних засобів на дан..."
+  },
+  "2054": {
+    "officialId": 4591,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4591.jpg",
+    "questionText": "Як повинен вчинити водій жовтого автомобіля в дані...",
+    "score": 0.8457142857142856,
+    "method": "fuzzy"
+  },
+  "2126": {
+    "officialId": 4006,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4006.jpg",
+    "questionText": "Водіям яких транспортних засобів дозволено рух у д..."
+  },
+  "2968": {
+    "officialId": 5661,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5661.jpg",
+    "questionText": "Вам дозволений розворот по траєкторії 2, тому що:...",
+    "score": 0.8411347517730496,
+    "method": "fuzzy"
+  },
+  "3010": {
+    "officialId": 5834,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5834.jpg",
+    "questionText": "У місцях, де рух регулюється, велосипедисти повинн...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "3012": {
+    "officialId": 5838,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5838.jpg",
+    "questionText": "Що в цьому випадку позначає ця горизонтальна розмі...",
+    "score": 0.8333333333333333,
+    "method": "fuzzy"
+  },
+  "3043": {
+    "officialId": 4970,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4970.jpg",
+    "questionText": "Чи дозволено водієві червоного автомобіля рухатись..."
+  },
+  "3044": {
+    "officialId": 4013,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4013.jpg",
+    "questionText": "Чи дозволено Вам повернути ліворуч у цьому випадку...",
+    "score": 0.688515406162465,
+    "method": "fuzzy"
+  },
+  "3061": {
+    "officialId": 5146,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5146.jpg",
+    "questionText": "Чи дозволено водієві жовтого автомобіля виконати о..."
+  },
+  "3070": {
+    "officialId": 4796,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4796.jpg",
+    "questionText": "Чи дозволено водієві сірого автомобіля зупинитись ...",
+    "score": 0.7622222222222222,
+    "method": "fuzzy"
+  },
+  "3071": {
+    "officialId": 4618,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4618.jpg",
+    "questionText": "Хто з водіїв, виконуючи зупинку, порушив Правила д...",
+    "score": 0.8911111111111111,
+    "method": "fuzzy"
+  },
+  "3072": {
+    "officialId": 4625,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4625.jpg",
+    "questionText": "Чи має право водій білого автомобіля виконати зупи...",
+    "score": 0.8200000000000001,
+    "method": "fuzzy"
+  },
+  "3073": {
+    "officialId": 4796,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4796.jpg",
+    "questionText": "Чи дозволено водієві сірого автомобіля зупинитись ...",
+    "score": 0.7622222222222222,
+    "method": "fuzzy"
+  },
+  "3084": {
+    "officialId": 4008,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4008.jpg",
+    "questionText": "Чи дозволено Вам повернути праворуч у цьому випадк...",
+    "score": 0.6907967032967033,
+    "method": "fuzzy"
+  },
+  "3085": {
+    "officialId": 4013,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4013.jpg",
+    "questionText": "Чи дозволено Вам повернути ліворуч у цьому випадку...",
+    "score": 0.688515406162465,
+    "method": "fuzzy"
+  },
+  "3282": {
+    "officialId": 3868,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_3868.jpg",
+    "questionText": "Поздовжня смуга на проїзній частині завширшки щона..."
+  },
+  "3284": {
+    "officialId": 3878,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_3878.jpg",
+    "questionText": "Доріжка з покриттям, призначена для руху пішоходів..."
+  },
+  "10001": {
+    "officialId": 4493,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4493.jpg",
+    "questionText": "Ви водій синього автомобіля, виконаєте розворот:..."
+  },
+  "10002": {
+    "officialId": 4494,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4494.jpg",
+    "questionText": "В'їжджаючи на дорогу по смузі розгону, водій повин..."
+  },
+  "10003": {
+    "officialId": 4495,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4495.jpg",
+    "questionText": "Чи дозволено рух заднім ходом на автомагістралях?..."
+  },
+  "11001": {
+    "officialId": 5661,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5661.jpg",
+    "questionText": "Вам дозволений розворот по траєкторії Б, тому що:...",
+    "score": 0.8539007092198581,
+    "method": "fuzzy"
+  },
+  "11002": {
+    "officialId": 5662,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5662.jpg",
+    "questionText": "Чи дозволено автомобілю виконати виїзд на трамвайн...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "11003": {
+    "officialId": 5663,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5663.jpg",
+    "questionText": "По якій траєкторії водієві дозволено виконати пово...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "11004": {
+    "officialId": 5664,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5664.jpg",
+    "questionText": "Чи дозволено водію у даній ситуації виконати повор...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "11006": {
+    "officialId": 5666,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5666.jpg",
+    "questionText": "Чи дозволено водієві рух по трамвайній колії попут...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "11007": {
+    "officialId": 5667,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5667.jpg",
+    "questionText": "Чи правильно водій автомобіля рухається по дорозі,...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "11008": {
+    "officialId": 3938,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_3938.jpg",
+    "questionText": "Як повинен вчинити водій у даній ситуації в разі р..."
+  },
+  "11011": {
+    "officialId": 5671,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5671.jpg",
+    "questionText": "По якій траєкторії велосипедистові дозволено подал...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "14002": {
+    "officialId": 5163,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5163.jpg",
+    "questionText": "У якому випадку водій білого автомобіля правильно ..."
+  },
+  "14003": {
+    "officialId": 5164,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5164.jpg",
+    "questionText": "Як в цій ситуації вчинити водієві червоного автомо..."
+  },
+  "16110": {
+    "officialId": 4957,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4957.jpg",
+    "questionText": "Як повинен вчинити водій червоного автомобіля, що ..."
+  },
+  "16114": {
+    "officialId": 4971,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4971.jpg",
+    "questionText": "Чи повинен водій синього автомобіля дати дорогу ве..."
+  },
+  "16116": {
+    "officialId": 4975,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4975.jpg",
+    "questionText": "Повертаючи ліворуч на перехресті, водій білого авт..."
+  },
+  "16120": {
+    "officialId": 4971,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4971.jpg",
+    "questionText": "Чи повинен водій синього автомобіля дати дорогу пі..."
+  },
+  "16121": {
+    "officialId": 4970,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4970.jpg",
+    "questionText": "Чи дозволено водієві червоного автомобіля виїхати ..."
+  },
+  "16122": {
+    "officialId": 4976,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4976.jpg",
+    "questionText": "Як зобов'язаний вчинити водій чорного автомобіля, ..."
+  },
+  "16124": {
+    "officialId": 4591,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4591.jpg",
+    "questionText": "Як повинен вчинити водій синього автомобіля при вв..."
+  },
+  "16125": {
+    "officialId": 4982,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4982.jpg",
+    "questionText": "Хто проїде дане перехрестя першим?..."
+  },
+  "16126": {
+    "officialId": 4983,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4983.jpg",
+    "questionText": "Як Ви повинні вчинити, повертаючи ліворуч у даній ..."
+  },
+  "16127": {
+    "officialId": 4963,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4963.jpg",
+    "questionText": "Як Ви повинні вчинити в даній ситуації, рухаючись ..."
+  },
+  "041": {
+    "officialId": 3946,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_3946.jpg",
+    "questionText": "З якого боку від трамвая пішоходам дозволяється ви..."
+  },
+  "08103": {
+    "officialId": 4008,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4008.jpg",
+    "questionText": "Чи дозволено Вам повернути праворуч у даній ситуац..."
+  },
+  "08106": {
+    "officialId": 4011,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4011.jpg",
+    "questionText": "Чи повинен водій синього автомобіля, повертаючи пр..."
+  },
+  "08202": {
+    "officialId": 4430,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4430.jpg",
+    "questionText": "На якому малюнку зображено тимчасовий дорожній зна..."
+  },
+  "08203": {
+    "officialId": 4431,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4431.jpg",
+    "questionText": "Яке значення має жовтий миготливий сигнал світлофо..."
+  },
+  "044": {
+    "officialId": 3984,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_3984.jpg",
+    "questionText": "Чи мають перевагу в русі велосипедисти, якщо велос...",
+    "score": 0.8069230769230769,
+    "method": "fuzzy"
+  },
+  "056": {
+    "officialId": 5557,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_5557.jpg",
+    "questionText": "Чи дозволено рух через залізничний переїзд у ситуа...",
+    "score": 1,
+    "method": "exact_start"
+  },
+  "08201": {
+    "officialId": 4029,
+    "imageUrl": "https://web.testpdr.com/storage/questions/QNS_4029.jpg",
+    "questionText": "У якому напрямку Вам дозволено рух?...",
+    "score": 0.95,
+    "method": "contains"
+  }
+}

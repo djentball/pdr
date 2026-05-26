@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Артефакти скрапінгу — не потрібні для білда (150 МБ PNG)
+/files/
+
+# Локальні налаштування Claude Code
+.claude/
