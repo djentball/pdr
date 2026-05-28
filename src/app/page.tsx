@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { getSession } from '@/lib/auth';
 import { sql } from '@/lib/db';
 import LogoutButton from '@/components/LogoutButton';
+import questionsData from '@/data/questions.json';
+
+const TOTAL_QUESTIONS = questionsData.length;
 
 export const dynamic = 'force-dynamic';
 
@@ -107,7 +110,7 @@ export default async function Home() {
                   <span className="text-2xl">▶️</span>
                   <div className="flex-1">
                     <h2 className="font-semibold text-blue-900">Продовжити навчання</h2>
-                    <p className="text-xs text-blue-700">з {stats.sequentialProgress + 1}-го питання з 326</p>
+                    <p className="text-xs text-blue-700">з {stats.sequentialProgress + 1}-го питання з {TOTAL_QUESTIONS}</p>
                   </div>
                 </div>
               </Link>
@@ -156,7 +159,7 @@ export default async function Home() {
           </Link>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-8">Всього питань у базі: 326</p>
+        <p className="text-center text-xs text-gray-400 mt-8">Всього питань у базі: {TOTAL_QUESTIONS}</p>
       </div>
     </main>
   );
