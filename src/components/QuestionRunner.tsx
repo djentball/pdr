@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import QuestionCard from './QuestionCard';
 import AnswerOption from './AnswerOption';
@@ -18,6 +18,10 @@ interface QuestionRunnerProps {
   progressMode?: string;
   /** Початковий індекс (наприклад відновлений з БД) */
   initialIndex?: number;
+  /** Початковий лічильник правильних */
+  initialCorrectCount?: number;
+  /** Початковий лічильник неправильних */
+  initialWrongCount?: number;
   /** Початковий набір id закладок */
   initialBookmarks?: number[];
   /** Чи звітувати відповіді на сервер (записати в pdr_answer_history) */
@@ -32,6 +36,8 @@ export default function QuestionRunner({
   backHref = '/',
   progressMode,
   initialIndex = 0,
+  initialCorrectCount = 0,
+  initialWrongCount = 0,
   initialBookmarks = [],
   recordAnswers = true,
   completionTitle = 'Завершено!',
@@ -39,20 +45,25 @@ export default function QuestionRunner({
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [selectedAnswerId, setSelectedAnswerId] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [wrongCount, setWrongCount] = useState(0);
+  const [correctCount, setCorrectCount] = useState(initialCorrectCount);
+  const [wrongCount, setWrongCount] = useState(initialWrongCount);
   const [bookmarks, setBookmarks] = useState<Set<number>>(new Set(initialBookmarks));
   const [completed, setCompleted] = useState(false);
 
-  // Запис прогресу в БД (debounce через ефект)
+  // Запис прогресу в БД разом з лічильниками
   const saveProgress = useCallback(
-    async (index: number) => {
+    async (index: number, correct: number, wrong: number) => {
       if (!progressMode) return;
       try {
         await fetch('/api/progress', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ mode: progressMode, currentIndex: index }),
+          body: JSON.stringify({
+            mode: progressMode,
+            currentIndex: index,
+            correctCount: correct,
+            wrongCount: wrong,
+          }),
         });
       } catch {
         // ігноруємо помилки збереження
@@ -68,8 +79,10 @@ export default function QuestionRunner({
 
     setSelectedAnswerId(answerId);
     setShowResult(true);
-    if (isCorrect) setCorrectCount((c) => c + 1);
-    else setWrongCount((w) => w + 1);
+    const newCorrect = isCorrect ? correctCount + 1 : correctCount;
+    const newWrong = isCorrect ? wrongCount : wrongCount + 1;
+    if (isCorrect) setCorrectCount(newCorrect);
+    else setWrongCount(newWrong);
 
     if (recordAnswers) {
       fetch('/api/answers', {
@@ -78,6 +91,9 @@ export default function QuestionRunner({
         body: JSON.stringify({ questionId: q.id, selectedAnswerId: answerId, isCorrect }),
       }).catch(() => {});
     }
+
+    // Зберігаю прогрес одразу після відповіді (щоб при виході лічильники збереглися)
+    saveProgress(currentIndex, newCorrect, newWrong);
   };
 
   const handleNext = () => {
@@ -86,12 +102,12 @@ export default function QuestionRunner({
       setCurrentIndex(next);
       setSelectedAnswerId(null);
       setShowResult(false);
-      saveProgress(next);
+      saveProgress(next, correctCount, wrongCount);
     } else {
       setCompleted(true);
       if (progressMode) {
-        // на завершенні скидаємо прогрес у 0 щоб «Продовжити» зникло
-        saveProgress(0);
+        // на завершенні скидаємо все в 0 щоб «Продовжити» зникло і наступний раз був з чистого аркуша
+        saveProgress(0, 0, 0);
       }
     }
   };
@@ -102,7 +118,7 @@ export default function QuestionRunner({
       setCurrentIndex(next);
       setSelectedAnswerId(null);
       setShowResult(false);
-      saveProgress(next);
+      saveProgress(next, correctCount, wrongCount);
     }
   };
 
@@ -124,13 +140,7 @@ export default function QuestionRunner({
     }
   };
 
-  // Початкове збереження якщо є progressMode
-  useEffect(() => {
-    if (progressMode && currentIndex > 0) {
-      saveProgress(currentIndex);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Прибрано початкове збереження — лічильники і індекс ставимо одразу з initial*
 
   if (questions.length === 0) {
     return (

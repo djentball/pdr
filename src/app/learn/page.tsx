@@ -14,12 +14,17 @@ interface SearchParams {
   resume?: 'all-sequential';
 }
 
-async function loadProgress(userId: number, mode: string): Promise<number> {
+async function loadProgress(userId: number, mode: string): Promise<{ currentIndex: number; correctCount: number; wrongCount: number }> {
   const rows = (await sql`
-    SELECT current_index FROM pdr_progress
+    SELECT current_index, correct_count, wrong_count FROM pdr_progress
     WHERE user_id = ${userId} AND mode = ${mode}
-  `) as Array<{ current_index: number }>;
-  return rows[0]?.current_index ?? 0;
+  `) as Array<{ current_index: number; correct_count: number; wrong_count: number }>;
+  const r = rows[0];
+  return {
+    currentIndex: r?.current_index ?? 0,
+    correctCount: r?.correct_count ?? 0,
+    wrongCount: r?.wrong_count ?? 0,
+  };
 }
 
 async function loadBookmarks(userId: number): Promise<number[]> {
@@ -46,7 +51,7 @@ export default async function LearnPage({
 
   // Режим: продовжити sequential
   if (params.resume === 'all-sequential') {
-    const initialIndex = await loadProgress(session.userId, 'all-sequential');
+    const progress = await loadProgress(session.userId, 'all-sequential');
     const questions = [...allQuestions].sort((a, b) => a.id - b.id);
     return (
       <QuestionRunner
@@ -54,7 +59,9 @@ export default async function LearnPage({
         title="Всі питання — попідряд"
         backHref="/"
         progressMode="all-sequential"
-        initialIndex={initialIndex}
+        initialIndex={progress.currentIndex}
+        initialCorrectCount={progress.correctCount}
+        initialWrongCount={progress.wrongCount}
         initialBookmarks={bookmarks}
         completionTitle="Усі питання завершено!"
       />
@@ -110,14 +117,14 @@ export default async function LearnPage({
   for (const cat of categories) {
     categoryCounts[cat] = getQuestionsByCategory(allQuestions, cat).length;
   }
-  const sequentialProgress = await loadProgress(session.userId, 'all-sequential');
+  const seqProgress = await loadProgress(session.userId, 'all-sequential');
 
   return (
     <LearnCategoryPicker
       categories={categories}
       counts={categoryCounts}
       totalQuestions={allQuestions.length}
-      sequentialProgress={sequentialProgress}
+      sequentialProgress={seqProgress.currentIndex}
     />
   );
 }
