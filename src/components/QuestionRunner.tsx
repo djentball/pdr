@@ -205,9 +205,13 @@ export default function QuestionRunner({
         <div className="flex items-center justify-between gap-3 mb-3 sm:mb-4">
           <Link
             href={backHref}
-            className="text-sm text-gray-500 hover:text-gray-700 min-h-[44px] flex items-center -ml-1 px-1"
+            aria-label="Назад"
+            className="flex-shrink-0 flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transition-colors min-h-[36px]"
           >
-            ← Назад
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+            <span className="hidden sm:inline">Назад</span>
           </Link>
           <span className="flex-1 text-xs sm:text-sm text-green-600 font-medium text-center line-clamp-1">
             {title}
