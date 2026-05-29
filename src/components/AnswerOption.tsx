@@ -23,7 +23,7 @@ export default function AnswerOption({
 }: AnswerOptionProps) {
   // Стан кнопки
   const buttonClasses = [
-    'w-full text-left rounded-xl border-2 transition-all duration-200',
+    'w-full text-left rounded-2xl border transition-all duration-200',
     'px-4 py-3 sm:px-5 sm:py-4',
     'min-h-[56px]', // зручний tap-target на мобілці
     'active:scale-[0.99]',

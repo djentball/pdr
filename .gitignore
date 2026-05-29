@@ -22,7 +22,12 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+*.log
+*.tmp
+*.swp
+*.swo
 
 # debug
 npm-debug.log*
@@ -30,8 +35,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (можна opt-in для коміту якщо треба)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,8 +46,17 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Артефакти скрапінгу — не потрібні для білда (150 МБ PNG)
+# python virtualenv (для допоміжних скриптів парсингу)
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# Артефакти скрапінгу — оригінали PDF/DOCX великі і не потрібні для білда
 /files/
 
-# Локальні налаштування Claude Code
+# Локальні налаштування Claude Code (AI assistant)
 .claude/

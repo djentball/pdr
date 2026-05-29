@@ -172,21 +172,26 @@ export default function QuestionRunner({
     const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     return (
       <main className="min-h-screen flex flex-col items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-6 sm:p-8 text-center">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 p-6 sm:p-8 text-center">
           <div className="text-5xl mb-4">🎉</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">{completionTitle}</h1>
-          <div className="text-gray-600 mb-6 space-y-1">
-            <p>
-              Правильних: <span className="text-green-600 font-semibold">{correctCount}</span>
-            </p>
-            <p>
-              Неправильних: <span className="text-red-600 font-semibold">{wrongCount}</span>
-            </p>
-            <p>Точність: {accuracy}%</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-6">{completionTitle}</h1>
+          <div className="grid grid-cols-3 gap-3 mb-6">
+            <div className="rounded-xl bg-green-50 py-3">
+              <div className="text-2xl font-bold text-green-700 tabular-nums">{correctCount}</div>
+              <div className="text-xs text-green-700/80 mt-0.5">правильних</div>
+            </div>
+            <div className="rounded-xl bg-red-50 py-3">
+              <div className="text-2xl font-bold text-red-700 tabular-nums">{wrongCount}</div>
+              <div className="text-xs text-red-700/80 mt-0.5">помилок</div>
+            </div>
+            <div className="rounded-xl bg-blue-50 py-3">
+              <div className="text-2xl font-bold text-blue-700 tabular-nums">{accuracy}%</div>
+              <div className="text-xs text-blue-700/80 mt-0.5">точність</div>
+            </div>
           </div>
           <Link
             href={backHref}
-            className="block w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700"
+            className="block w-full bg-blue-600 text-white py-3.5 px-6 rounded-2xl font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors"
           >
             На головну
           </Link>
@@ -269,14 +274,18 @@ export default function QuestionRunner({
         {/* Explanation */}
         {showResult && q.explanation && (
           <div
-            className={`p-3 sm:p-4 rounded-lg mb-4 sm:mb-6 ${
+            className={`rounded-2xl p-4 sm:p-5 mb-4 sm:mb-6 ${
               selectedAnswerId === q.correctAnswerId
-                ? 'bg-green-50 border border-green-200'
-                : 'bg-red-50 border border-red-200'
+                ? 'bg-green-50 ring-1 ring-green-100'
+                : 'bg-red-50 ring-1 ring-red-100'
             }`}
           >
-            <p className="text-sm font-medium mb-1">
-              {selectedAnswerId === q.correctAnswerId ? '✓ Правильно!' : '✗ Неправильно'}
+            <p
+              className={`text-sm font-semibold mb-1.5 ${
+                selectedAnswerId === q.correctAnswerId ? 'text-green-800' : 'text-red-800'
+              }`}
+            >
+              {selectedAnswerId === q.correctAnswerId ? 'Правильно!' : 'Неправильно'}
             </p>
             <p className="text-sm text-gray-700 leading-relaxed">{q.explanation}</p>
           </div>
@@ -284,12 +293,12 @@ export default function QuestionRunner({
       </div>
 
       {/* Sticky bottom buttons */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-3 sm:px-4 py-3 sm:py-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] z-10 shadow-[0_-4px_12px_rgba(0,0,0,0.04)]">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-gray-100 px-3 sm:px-4 py-3 sm:py-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] z-10">
         <div className="max-w-2xl mx-auto flex gap-2 sm:gap-3">
           {!showResult && (
             <button
               onClick={handleSkip}
-              className="flex-1 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300 transition-colors min-h-[52px]"
+              className="flex-1 py-3.5 rounded-2xl font-semibold text-base bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300 transition-colors min-h-[52px]"
             >
               Пропустити
             </button>
@@ -297,9 +306,9 @@ export default function QuestionRunner({
           <button
             onClick={handleNext}
             disabled={!showResult}
-            className={`flex-1 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors min-h-[52px] ${
+            className={`flex-1 py-3.5 rounded-2xl font-semibold text-base transition-all min-h-[52px] ${
               showResult
-                ? 'bg-green-600 text-white hover:bg-green-700 active:bg-green-800'
+                ? 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm shadow-blue-600/20'
                 : 'bg-gray-100 text-gray-400 cursor-not-allowed'
             }`}
           >

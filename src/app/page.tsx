@@ -70,17 +70,32 @@ export default async function Home() {
 
         {/* Особисті картки (якщо є прогрес) */}
         {stats && (stats.mistakesCount > 0 || stats.bookmarksCount > 0 || stats.sequentialProgress > 0) && (
-          <div className="grid grid-cols-1 gap-3 mb-4">
+          <div className="grid grid-cols-1 gap-2.5 mb-3">
+            {stats.sequentialProgress > 0 && (
+              <Link
+                href="/learn?resume=all-sequential"
+                className="group block p-4 bg-blue-50 rounded-2xl ring-1 ring-blue-100 hover:ring-blue-300 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">▶️</span>
+                  <div className="flex-1 min-w-0">
+                    <h2 className="font-semibold text-blue-900 leading-tight">Продовжити навчання</h2>
+                    <p className="text-xs text-blue-700/80 mt-0.5">питання {stats.sequentialProgress + 1} з {TOTAL_QUESTIONS}</p>
+                  </div>
+                </div>
+              </Link>
+            )}
+
             {stats.mistakesCount > 0 && (
               <Link
                 href="/mistakes"
-                className="block p-4 bg-red-50 rounded-xl border-2 border-red-200 hover:border-red-400 transition-colors"
+                className="group block p-4 bg-red-50 rounded-2xl ring-1 ring-red-100 hover:ring-red-300 transition-all"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">📕</span>
-                  <div className="flex-1">
-                    <h2 className="font-semibold text-red-900">Робота над помилками</h2>
-                    <p className="text-xs text-red-700">{stats.mistakesCount} питань з помилками</p>
+                  <div className="flex-1 min-w-0">
+                    <h2 className="font-semibold text-red-900 leading-tight">Робота над помилками</h2>
+                    <p className="text-xs text-red-700/80 mt-0.5">{stats.mistakesCount} питань з помилками</p>
                   </div>
                 </div>
               </Link>
@@ -89,28 +104,13 @@ export default async function Home() {
             {stats.bookmarksCount > 0 && (
               <Link
                 href="/bookmarks"
-                className="block p-4 bg-yellow-50 rounded-xl border-2 border-yellow-200 hover:border-yellow-400 transition-colors"
+                className="group block p-4 bg-yellow-50 rounded-2xl ring-1 ring-yellow-100 hover:ring-yellow-300 transition-all"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">⭐️</span>
-                  <div className="flex-1">
-                    <h2 className="font-semibold text-yellow-900">Закладки</h2>
-                    <p className="text-xs text-yellow-700">{stats.bookmarksCount} збережених</p>
-                  </div>
-                </div>
-              </Link>
-            )}
-
-            {stats.sequentialProgress > 0 && (
-              <Link
-                href="/learn?resume=all-sequential"
-                className="block p-4 bg-blue-50 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">▶️</span>
-                  <div className="flex-1">
-                    <h2 className="font-semibold text-blue-900">Продовжити навчання</h2>
-                    <p className="text-xs text-blue-700">з {stats.sequentialProgress + 1}-го питання з {TOTAL_QUESTIONS}</p>
+                  <div className="flex-1 min-w-0">
+                    <h2 className="font-semibold text-yellow-900 leading-tight">Закладки</h2>
+                    <p className="text-xs text-yellow-700/80 mt-0.5">{stats.bookmarksCount} збережених</p>
                   </div>
                 </div>
               </Link>
@@ -118,42 +118,42 @@ export default async function Home() {
           </div>
         )}
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           <Link
             href="/exam"
-            className="block w-full p-5 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border-2 border-transparent hover:border-blue-500"
+            className="block w-full p-5 bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 hover:ring-blue-300 hover:shadow-md transition-all"
           >
             <div className="flex items-center gap-4">
               <span className="text-2xl sm:text-3xl">📝</span>
               <div>
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Іспит</h2>
-                <p className="text-xs sm:text-sm text-gray-500">20 питань • 20 хвилин • макс 2 помилки</p>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Іспит</h2>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">20 питань • 20 хвилин • макс 2 помилки</p>
               </div>
             </div>
           </Link>
 
           <Link
             href="/learn"
-            className="block w-full p-5 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border-2 border-transparent hover:border-green-500"
+            className="block w-full p-5 bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 hover:ring-green-300 hover:shadow-md transition-all"
           >
             <div className="flex items-center gap-4">
               <span className="text-2xl sm:text-3xl">📚</span>
               <div>
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Навчання</h2>
-                <p className="text-xs sm:text-sm text-gray-500">За темами • з поясненнями</p>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Навчання</h2>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">За темами • з поясненнями</p>
               </div>
             </div>
           </Link>
 
           <Link
             href="/practice"
-            className="block w-full p-5 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border-2 border-transparent hover:border-yellow-500"
+            className="block w-full p-5 bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 hover:ring-yellow-300 hover:shadow-md transition-all"
           >
             <div className="flex items-center gap-4">
               <span className="text-2xl sm:text-3xl">🎯</span>
               <div>
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-800">Практика</h2>
-                <p className="text-xs sm:text-sm text-gray-500">Без таймера • без обмежень</p>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Практика</h2>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">Без таймера • без обмежень</p>
               </div>
             </div>
           </Link>

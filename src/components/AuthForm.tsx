@@ -52,26 +52,26 @@ export default function AuthForm({ mode }: AuthFormProps) {
       <div className="w-full max-w-sm">
         <div className="text-center mb-6">
           <div className="text-4xl mb-2">🚦</div>
-          <h1 className="text-2xl font-bold text-gray-800">{title}</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
           <p className="text-sm text-gray-500 mt-1">Тести ПДР України 2026</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-md p-5 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 p-5 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
             <input
               type="email"
               autoComplete="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3.5 py-3 text-base bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-colors"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Пароль</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Пароль</label>
             <input
               type="password"
               autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
@@ -79,13 +79,13 @@ export default function AuthForm({ mode }: AuthFormProps) {
               minLength={6}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3.5 py-3 text-base bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-colors"
               placeholder="мінімум 6 символів"
             />
           </div>
 
           {error && (
-            <div className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg p-3">
+            <div className="text-sm text-red-700 bg-red-50 ring-1 ring-red-100 rounded-xl p-3">
               {error}
             </div>
           )}
@@ -93,9 +93,9 @@ export default function AuthForm({ mode }: AuthFormProps) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-300 transition-colors"
+            className="w-full py-3.5 rounded-2xl font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-300 transition-colors shadow-sm shadow-blue-600/20"
           >
-            {loading ? 'Зачекайте...' : submitText}
+            {loading ? 'Зачекайте…' : submitText}
           </button>
         </form>
 
