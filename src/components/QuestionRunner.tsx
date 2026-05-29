@@ -122,6 +122,17 @@ export default function QuestionRunner({
     }
   };
 
+  const handleRestart = () => {
+    if (!confirm('Скинути прогрес і почати з 1-го питання?')) return;
+    setCurrentIndex(0);
+    setSelectedAnswerId(null);
+    setShowResult(false);
+    setCorrectCount(0);
+    setWrongCount(0);
+    setCompleted(false);
+    if (progressMode) saveProgress(0, 0, 0);
+  };
+
   const toggleBookmark = async (questionId: number) => {
     const isBookmarked = bookmarks.has(questionId);
     const newSet = new Set(bookmarks);
@@ -198,9 +209,22 @@ export default function QuestionRunner({
           >
             ← Назад
           </Link>
-          <span className="text-xs sm:text-sm text-green-600 font-medium text-right line-clamp-1">
+          <span className="flex-1 text-xs sm:text-sm text-green-600 font-medium text-center line-clamp-1">
             {title}
           </span>
+          {progressMode && (
+            <button
+              onClick={handleRestart}
+              aria-label="Почати заново"
+              title="Почати заново"
+              className="flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-full hover:bg-gray-100 active:bg-gray-200 transition-colors text-gray-500"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 12a9 9 0 1 0 3-6.7" />
+                <path d="M3 4v5h5" />
+              </svg>
+            </button>
+          )}
           <BookmarkButton isBookmarked={isBookmarked} onClick={() => toggleBookmark(q.id)} />
         </div>
 

@@ -18,14 +18,3 @@ export interface UserAnswer {
   answerId: number;
   isCorrect: boolean;
 }
-
-export interface TestResult {
-  totalQuestions: number;
-  correctAnswers: number;
-  wrongAnswers: number;
-  passed: boolean;
-  timeSpent: number; // seconds
-  userAnswers: UserAnswer[];
-}
-
-export type TestMode = 'exam' | 'practice' | 'learn';
