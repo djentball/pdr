@@ -58,5 +58,10 @@ __pycache__/
 # Артефакти скрапінгу — оригінали PDF/DOCX великі і не потрібні для білда
 /files/
 
+# Тимчасові файли валідації (генеруються скриптами scripts/scrape-* і validate-*)
+scripts/pdrtest-scraped.json
+scripts/pdrtest-debug/
+scripts/validation-report.md
+
 # Локальні налаштування Claude Code (AI assistant)
 .claude/
