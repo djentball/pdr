@@ -27,7 +27,9 @@ const DEBUG_DIR = join(__dirname, 'pdrtest-debug');
 const args = process.argv.slice(2);
 const RESUME = args.includes('--resume');
 const DEBUG = args.includes('--debug');
-const TOPIC_FILTER = args.find((a) => a.startsWith('--topic='))?.split('=')[1];
+// Підтримка одного топіка (--topic=10) або списку через кому (--topic=10,11,12,13,14)
+const topicArg = args.find((a) => a.startsWith('--topic='))?.split('=')[1];
+const TOPIC_FILTER = topicArg ? new Set(topicArg.split(',').map((s) => s.trim())) : null;
 const MAX = Number(args.find((a) => a.startsWith('--max='))?.split('=')[1] ?? Infinity);
 const DELAY_MS = Number(args.find((a) => a.startsWith('--delay='))?.split('=')[1] ?? 600);
 
@@ -192,7 +194,7 @@ async function main() {
   let scrapedThisRun = 0;
 
   outer: for (const pat of TOPIC_PATTERNS) {
-    if (TOPIC_FILTER && String(pat.topic) !== TOPIC_FILTER) continue;
+    if (TOPIC_FILTER && !TOPIC_FILTER.has(String(pat.topic))) continue;
 
     let consecutive404 = 0;
     for (let num = 1; num <= pat.maxQ; num++) {
