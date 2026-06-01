@@ -68,7 +68,14 @@ const TOPIC_PATTERNS = [
   { topic: 30, sub: null, maxQ: 20 },
   { topic: 31, sub: null, maxQ: 25 },
   { topic: 32, sub: null, maxQ: 10 },
-  { topic: 33, sub: null, maxQ: 400 },
+  // 33-й топік має 7 підрозділів за типами знаків
+  { topic: 33, sub: 1, maxQ: 100 }, // Попереджувальні
+  { topic: 33, sub: 2, maxQ: 30 },  // Пріоритету
+  { topic: 33, sub: 3, maxQ: 100 }, // Заборонні
+  { topic: 33, sub: 4, maxQ: 40 },  // Наказові
+  { topic: 33, sub: 5, maxQ: 100 }, // Інформаційно-вказівні
+  { topic: 33, sub: 6, maxQ: 10 },  // Знаки сервісу
+  { topic: 33, sub: 7, maxQ: 30 },  // Таблички
   { topic: 34, sub: null, maxQ: 50 },
   { topic: 35, sub: null, maxQ: 200 },
   { topic: 36, sub: null, maxQ: 15 },
