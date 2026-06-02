@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BackPill from '@/components/BackPill';
 import { requireSession } from '@/lib/auth';
 import { sql } from '@/lib/db';
 
@@ -47,10 +48,11 @@ export default async function MockExamHistoryPage() {
     <main className="min-h-screen p-4 sm:py-12">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <Link href="/mock-exam" className="text-blue-600 hover:underline text-sm">
-            ← До іспиту
-          </Link>
-          <Link href="/" className="text-gray-500 hover:text-gray-700 text-sm">
+          <BackPill href="/mock-exam" label="До іспиту" />
+          <Link
+            href="/"
+            className="text-sm text-gray-500 hover:text-gray-700 font-medium"
+          >
             На головну
           </Link>
         </div>

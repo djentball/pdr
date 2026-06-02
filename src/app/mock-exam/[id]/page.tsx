@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import BackPill from '@/components/BackPill';
 import { requireSession } from '@/lib/auth';
 import { sql } from '@/lib/db';
 import questionsData from '@/data/questions.json';
@@ -70,11 +71,12 @@ export default async function MockExamDetailsPage({
     <main className="min-h-screen p-4 sm:py-10">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <Link href="/mock-exam/history" className="text-blue-600 hover:underline text-sm">
-            ← Історія
-          </Link>
-          <Link href="/mock-exam" className="text-gray-500 hover:text-gray-700 text-sm">
-            Спробувати ще
+          <BackPill href="/mock-exam/history" label="Історія" />
+          <Link
+            href="/mock-exam"
+            className="text-sm text-blue-600 hover:underline font-medium"
+          >
+            Спробувати ще →
           </Link>
         </div>
 

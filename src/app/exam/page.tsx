@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import BackPill from '@/components/BackPill';
 import QuestionCard from '@/components/QuestionCard';
 import AnswerOption from '@/components/AnswerOption';
 import Timer from '@/components/Timer';
@@ -17,18 +17,15 @@ const MAX_ERRORS = 2;
 
 export default function ExamPage() {
   const router = useRouter();
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions] = useState<Question[]>(() =>
+    getRandomQuestions(questionsData as Question[], EXAM_QUESTIONS_COUNT),
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswerId, setSelectedAnswerId] = useState<number | null>(null);
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [wrongCount, setWrongCount] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
-
-  useEffect(() => {
-    const randomQuestions = getRandomQuestions(questionsData as Question[], EXAM_QUESTIONS_COUNT);
-    setQuestions(randomQuestions);
-  }, []);
 
   const handleFinish = useCallback(() => {
     setIsFinished(true);
@@ -110,28 +107,28 @@ export default function ExamPage() {
 
   if (!isStarted) {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
-          <div className="text-5xl mb-4">📝</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Режим іспиту</h1>
-          <div className="text-gray-600 mb-6 space-y-2">
-            <p>• {EXAM_QUESTIONS_COUNT} питань</p>
-            <p>• Час: 20 хвилин</p>
-            <p>• Максимум {MAX_ERRORS} помилки</p>
-            <p>• Для складання потрібно 18+ правильних</p>
+      <main className="min-h-screen p-4 sm:py-10">
+        <div className="max-w-md mx-auto">
+          <div className="mb-5">
+            <BackPill href="/" />
           </div>
-          <button
-            onClick={() => setIsStarted(true)}
-            className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Почати іспит
-          </button>
-          <Link
-            href="/"
-            className="block mt-4 text-gray-500 hover:text-gray-700"
-          >
-            ← Повернутися
-          </Link>
+
+          <div className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 p-6 text-center">
+            <div className="text-5xl mb-3">📝</div>
+            <h1 className="text-2xl font-bold text-gray-800 mb-3">Тренувальний іспит</h1>
+            <div className="text-gray-600 mb-6 space-y-1.5 text-sm text-left">
+              <p>• {EXAM_QUESTIONS_COUNT} випадкових питань</p>
+              <p>• Час: 20 хвилин</p>
+              <p>• Максимум {MAX_ERRORS} помилки</p>
+              <p>• Для складання потрібно 18+ правильних</p>
+            </div>
+            <button
+              onClick={() => setIsStarted(true)}
+              className="w-full bg-blue-600 text-white py-3.5 px-6 rounded-xl font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm"
+            >
+              Почати іспит
+            </button>
+          </div>
         </div>
       </main>
     );
@@ -145,9 +142,7 @@ export default function ExamPage() {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <Link href="/" className="text-gray-500 hover:text-gray-700">
-            ← Вийти
-          </Link>
+          <BackPill href="/" label="Вийти" />
           <Timer
             initialSeconds={EXAM_TIME_SECONDS}
             onTimeUp={handleTimeUp}

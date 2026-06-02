@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import BackPill from '@/components/BackPill';
 import signsData from '@/data/signs.json';
 
 type SignGroup = 'warning' | 'priority' | 'prohibition' | 'mandatory' | 'info' | 'service';
@@ -81,10 +81,8 @@ export default function SignsPage() {
   return (
     <main className="min-h-screen p-4 sm:py-10">
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-5">
-          <Link href="/" className="text-blue-600 hover:underline text-sm">
-            ← На головну
-          </Link>
+        <div className="mb-5">
+          <BackPill href="/" label="На головну" />
         </div>
 
         <h1 className="text-2xl font-bold text-gray-800 mb-1">Каталог дорожніх знаків</h1>

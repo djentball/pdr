@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import BackPill from '@/components/BackPill';
 import QuestionCard from '@/components/QuestionCard';
 import AnswerOption from '@/components/AnswerOption';
 import Timer from '@/components/Timer';
@@ -119,47 +120,63 @@ export default function MockExamPage() {
 
   if (!isStarted) {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-6">
-          <div className="text-5xl mb-3 text-center">🏛️</div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-3 text-center">
-            Іспит ГСЦ МВС
-          </h1>
-          <p className="text-sm text-gray-500 text-center mb-5">
-            Офіційний формат: <b>{TOTAL_EXAM_QUESTIONS}</b> питань за <b>20 хв</b>, максимум{' '}
-            <b>{MAX_EXAM_ERRORS}</b> помилки.
-          </p>
-
-          <div className="border border-gray-100 rounded-lg p-4 mb-5">
-            <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
-              Структура білета
-            </p>
-            <ul className="space-y-1.5 text-sm text-gray-700">
-              {(Object.keys(BLOCK_QUOTAS) as Array<keyof typeof BLOCK_QUOTAS>).map((b) => (
-                <li key={b} className="flex justify-between">
-                  <span>{BLOCK_LABELS[b]}</span>
-                  <span className="font-semibold tabular-nums">{BLOCK_QUOTAS[b]}</span>
-                </li>
-              ))}
-            </ul>
+      <main className="min-h-screen p-4 sm:py-10">
+        <div className="max-w-md mx-auto">
+          <div className="mb-5">
+            <BackPill href="/" />
           </div>
 
-          <button
-            onClick={() => {
-              startedAtRef.current = Date.now();
-              setIsStarted(true);
-            }}
-            className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Почати іспит
-          </button>
-          <div className="flex items-center justify-center gap-4 mt-4 text-sm">
-            <Link href="/mock-exam/history" className="text-blue-600 hover:underline">
+          <div className="bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 p-6">
+            <div className="text-5xl mb-3 text-center">🏛️</div>
+            <h1 className="text-2xl font-bold text-gray-800 mb-2 text-center">
+              Іспит ГСЦ МВС
+            </h1>
+            <p className="text-sm text-gray-500 text-center mb-5">
+              Офіційний формат: <b>{TOTAL_EXAM_QUESTIONS}</b> питань за <b>20 хв</b>,
+              максимум <b>{MAX_EXAM_ERRORS}</b> помилки.
+            </p>
+
+            <div className="rounded-xl bg-gray-50 p-4 mb-5">
+              <p className="text-xs uppercase tracking-wide text-gray-400 mb-2">
+                Структура білета
+              </p>
+              <ul className="space-y-1.5 text-sm text-gray-700">
+                {(Object.keys(BLOCK_QUOTAS) as Array<keyof typeof BLOCK_QUOTAS>).map((b) => (
+                  <li key={b} className="flex justify-between">
+                    <span>{BLOCK_LABELS[b]}</span>
+                    <span className="font-semibold tabular-nums">{BLOCK_QUOTAS[b]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <button
+              onClick={() => {
+                startedAtRef.current = Date.now();
+                setIsStarted(true);
+              }}
+              className="w-full bg-blue-600 text-white py-3.5 px-6 rounded-xl font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors shadow-sm"
+            >
+              Почати іспит
+            </button>
+
+            <Link
+              href="/mock-exam/history"
+              className="mt-3 flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl text-sm font-medium text-gray-700 bg-gray-50 hover:bg-gray-100 transition-colors"
+            >
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
               Історія спроб
-            </Link>
-            <span className="text-gray-300">·</span>
-            <Link href="/" className="text-gray-500 hover:text-gray-700">
-              ← Назад
             </Link>
           </div>
         </div>
@@ -174,9 +191,7 @@ export default function MockExamPage() {
     <main className="min-h-screen p-4 pb-24">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-4">
-          <Link href="/" className="text-gray-500 hover:text-gray-700 text-sm">
-            ← Вийти
-          </Link>
+          <BackPill href="/" label="Вийти" />
           <Timer
             initialSeconds={EXAM_TIME_SECONDS}
             onTimeUp={handleTimeUp}
