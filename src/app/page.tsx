@@ -178,6 +178,19 @@ export default async function Home() {
               </div>
             </div>
           </Link>
+
+          <Link
+            href="/signs"
+            className="block w-full p-5 bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 hover:ring-purple-300 hover:shadow-md transition-all"
+          >
+            <div className="flex items-center gap-4">
+              <span className="text-2xl sm:text-3xl">🚸</span>
+              <div>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Каталог знаків</h2>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">Усі знаки з картинками • довідник</p>
+              </div>
+            </div>
+          </Link>
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-8">Всього питань у базі: {TOTAL_QUESTIONS}</p>
