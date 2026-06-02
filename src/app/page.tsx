@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { getSession } from '@/lib/auth';
 import { sql } from '@/lib/db';
 import LogoutButton from '@/components/LogoutButton';
+import ReadinessWidget from '@/components/ReadinessWidget';
+import { computeReadiness } from '@/lib/readiness';
 import questionsData from '@/data/questions.json';
 
 const TOTAL_QUESTIONS = questionsData.length;
@@ -50,6 +52,7 @@ export default async function Home() {
   const session = await getSession();
   // Middleware гарантує що тут користувач залогінений
   const stats = session ? await loadStats(session.userId) : null;
+  const readiness = session ? await computeReadiness(session.userId).catch(() => null) : null;
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-6 sm:py-12">
@@ -62,11 +65,13 @@ export default async function Home() {
           </div>
         )}
 
-        <div className="text-center mb-6 sm:mb-8">
+        <div className="text-center mb-5 sm:mb-6">
           <div className="text-5xl sm:text-6xl mb-3">🚗</div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-1">Тести ПДР України</h1>
           <p className="text-gray-600 text-sm sm:text-base">Підготовка до іспиту в ГСЦ МВС</p>
         </div>
+
+        {readiness && <ReadinessWidget data={readiness} />}
 
         {/* Особисті картки (якщо є прогрес) */}
         {stats && (stats.mistakesCount > 0 || stats.bookmarksCount > 0 || stats.sequentialProgress > 0) && (
@@ -120,14 +125,30 @@ export default async function Home() {
 
         <div className="space-y-2.5">
           <Link
+            href="/mock-exam"
+            className="block w-full p-5 bg-white rounded-2xl shadow-sm ring-1 ring-blue-200 hover:ring-blue-400 hover:shadow-md transition-all"
+          >
+            <div className="flex items-center gap-4">
+              <span className="text-2xl sm:text-3xl">🏛️</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Іспит ГСЦ МВС</h2>
+                  <span className="text-[10px] uppercase tracking-wide bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded">офіційний</span>
+                </div>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">10 ПДР · 4 безпека · 4 будова · 2 медицина</p>
+              </div>
+            </div>
+          </Link>
+
+          <Link
             href="/exam"
             className="block w-full p-5 bg-white rounded-2xl shadow-sm ring-1 ring-gray-100 hover:ring-blue-300 hover:shadow-md transition-all"
           >
             <div className="flex items-center gap-4">
               <span className="text-2xl sm:text-3xl">📝</span>
               <div>
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Іспит</h2>
-                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">20 питань • 20 хвилин • макс 2 помилки</p>
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Тренувальний іспит</h2>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">20 випадкових питань • 20 хв • макс 2 помилки</p>
               </div>
             </div>
           </Link>
