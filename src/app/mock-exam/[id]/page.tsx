@@ -119,7 +119,12 @@ export default async function MockExamDetailsPage({
                 }`}
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
-                  <span className="text-xs text-gray-500">Питання {idx}</span>
+                  <span className="text-xs text-gray-500 inline-flex items-center gap-1.5">
+                    Питання {idx}
+                    <span className="text-[10px] font-mono text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">
+                      #{q.id}
+                    </span>
+                  </span>
                   {q.category && (
                     <span className="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">
                       {q.category}
