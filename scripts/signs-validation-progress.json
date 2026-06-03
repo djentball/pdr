@@ -1,10 +1,9 @@
 {
-  "last_processed_index": 50,
-  "last_batch_range": "1015..1064",
-  "next_batch_start": 50,
-  "next_batch_range": "1065..1114",
+  "last_processed_index": 100,
+  "last_batch_range": "1065..1114",
+  "next_batch_start": 100,
+  "next_batch_range": "1115..1164",
   "total_signs": 356,
-  "bugs_found_so_far": 11,
-  "uncertain_so_far": 7,
-  "note": "index — порядковий номер у списку питань категорії Дорожні знаки, що мають image"
+  "bugs_found_so_far": 12,
+  "uncertain_so_far": 10
 }
