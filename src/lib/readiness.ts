@@ -106,7 +106,7 @@ export async function computeReadiness(userId: number): Promise<ReadinessSnapsho
     ),
     safe(
       sql`
-        SELECT DISTINCT DATE(answered_at AT TIME ZONE 'UTC') AS d
+        SELECT DISTINCT to_char(DATE(answered_at AT TIME ZONE 'UTC'), 'YYYY-MM-DD') AS d
         FROM pdr_answer_history
         WHERE user_id = ${userId}
           AND answered_at >= NOW() - INTERVAL '60 days'
@@ -137,7 +137,13 @@ export async function computeReadiness(userId: number): Promise<ReadinessSnapsho
   const mockAttempts = mockRows.length;
   const mockPassed = mockRows.filter((r) => r.passed).length;
   const mockPass = mockAttempts > 0 ? (mockPassed / mockAttempts) * 100 : 0;
-  const days = new Set(streakRows.map((r) => r.d.slice(0, 10)));
+  const days = new Set(
+    streakRows.map((r) => {
+      // Захист: Neon може повертати DATE як Date object, не string
+      if (typeof r.d === 'string') return r.d.slice(0, 10);
+      return new Date(r.d as unknown as string | number).toISOString().slice(0, 10);
+    }),
+  );
   let streakDays = 0;
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
