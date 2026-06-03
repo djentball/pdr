@@ -59,30 +59,67 @@ interface StreakRow {
   d: string;
 }
 
+/** Безпечно виконати SQL, повернути fallback при помилці (напр. немає таблиці). */
+async function safe<T>(promise: Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await promise;
+  } catch (e) {
+    console.warn('[readiness] sql failed:', (e as Error).message);
+    return fallback;
+  }
+}
+
 export async function computeReadiness(userId: number): Promise<ReadinessSnapshot> {
-  // --- (1) Точність останніх N відповідей ---
-  const accRows = (await sql`
-    WITH recent AS (
-      SELECT is_correct FROM pdr_answer_history
-      WHERE user_id = ${userId}
-      ORDER BY answered_at DESC
-      LIMIT ${RECENT_ANSWERS_WINDOW}
-    )
-    SELECT COUNT(*)::int AS total,
-           COUNT(*) FILTER (WHERE is_correct)::int AS correct
-    FROM recent
-  `) as RecentAccRow[];
+  // Усі 4 запити одночасно — швидше + ізоляція помилок (mock-exam таблиця може ще не існувати)
+  const [accRows, coverageRows, mockRows, streakRows] = await Promise.all([
+    safe(
+      sql`
+        WITH recent AS (
+          SELECT is_correct FROM pdr_answer_history
+          WHERE user_id = ${userId}
+          ORDER BY answered_at DESC
+          LIMIT ${RECENT_ANSWERS_WINDOW}
+        )
+        SELECT COUNT(*)::int AS total,
+               COUNT(*) FILTER (WHERE is_correct)::int AS correct
+        FROM recent
+      ` as unknown as Promise<RecentAccRow[]>,
+      [{ total: 0, correct: 0 }] as RecentAccRow[],
+    ),
+    safe(
+      sql`
+        SELECT question_id, COUNT(*)::int AS cnt
+        FROM pdr_answer_history
+        WHERE user_id = ${userId}
+        GROUP BY question_id
+      ` as unknown as Promise<CoverageRow[]>,
+      [] as CoverageRow[],
+    ),
+    safe(
+      sql`
+        SELECT passed FROM pdr_mock_exam_attempts
+        WHERE user_id = ${userId}
+        ORDER BY finished_at DESC
+        LIMIT ${RECENT_MOCK_WINDOW}
+      ` as unknown as Promise<MockRow[]>,
+      [] as MockRow[],
+    ),
+    safe(
+      sql`
+        SELECT DISTINCT DATE(answered_at AT TIME ZONE 'UTC') AS d
+        FROM pdr_answer_history
+        WHERE user_id = ${userId}
+          AND answered_at >= NOW() - INTERVAL '60 days'
+        ORDER BY d DESC
+      ` as unknown as Promise<StreakRow[]>,
+      [] as StreakRow[],
+    ),
+  ]);
+
   const recentTotal = Number(accRows[0]?.total ?? 0);
   const recentCorrect = Number(accRows[0]?.correct ?? 0);
   const accuracy = recentTotal > 0 ? (recentCorrect / recentTotal) * 100 : 0;
 
-  // --- (2) Покриття категорій (потрібно >=5 відповідей за категорію) ---
-  const coverageRows = (await sql`
-    SELECT question_id, COUNT(*)::int AS cnt
-    FROM pdr_answer_history
-    WHERE user_id = ${userId}
-    GROUP BY question_id
-  `) as CoverageRow[];
   const categoryById = new Map<number, string | undefined>(
     (questionsData as Question[]).map((q) => [q.id, q.category]),
   );
@@ -97,26 +134,9 @@ export async function computeReadiness(userId: number): Promise<ReadinessSnapsho
   ).length;
   const coverage = TOTAL_CATEGORIES > 0 ? (coveredCategories / TOTAL_CATEGORIES) * 100 : 0;
 
-  // --- (3) % зданих останніх N mock-exam спроб ---
-  const mockRows = (await sql`
-    SELECT passed FROM pdr_mock_exam_attempts
-    WHERE user_id = ${userId}
-    ORDER BY finished_at DESC
-    LIMIT ${RECENT_MOCK_WINDOW}
-  `) as MockRow[];
   const mockAttempts = mockRows.length;
   const mockPassed = mockRows.filter((r) => r.passed).length;
   const mockPass = mockAttempts > 0 ? (mockPassed / mockAttempts) * 100 : 0;
-
-  // --- (4) Серія днів практики (streak) ---
-  // Беремо унікальні дні з історією, рахуємо беззпервний хвіст з сьогодні/вчора
-  const streakRows = (await sql`
-    SELECT DISTINCT DATE(answered_at AT TIME ZONE 'UTC') AS d
-    FROM pdr_answer_history
-    WHERE user_id = ${userId}
-      AND answered_at >= NOW() - INTERVAL '60 days'
-    ORDER BY d DESC
-  `) as StreakRow[];
   const days = new Set(streakRows.map((r) => r.d.slice(0, 10)));
   let streakDays = 0;
   const today = new Date();

@@ -52,7 +52,7 @@ export default async function Home() {
   const session = await getSession();
   // Middleware гарантує що тут користувач залогінений
   const stats = session ? await loadStats(session.userId) : null;
-  const readiness = session ? await computeReadiness(session.userId).catch(() => null) : null;
+  const readiness = session ? await computeReadiness(session.userId) : null;
 
   return (
     <main className="min-h-screen flex flex-col items-center px-4 py-6 sm:py-12">
