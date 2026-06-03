@@ -34,7 +34,28 @@ const statements = migration
 
 console.log(`Запускаю ${statements.length} SQL-стейтментів для mock-exam...`);
 for (const stmt of statements) {
-  console.log(`→ ${stmt.replace(/\s+/g, ' ').slice(0, 80)}...`);
-  await sql.query(stmt);
+  console.log(`→ ${stmt.replace(/\s+/g, ' ').slice(0, 100)}...`);
+  try {
+    await sql.query(stmt);
+    console.log('   ✓ OK');
+  } catch (e) {
+    console.error('   ✗ ERROR:', e.message);
+    process.exit(1);
+  }
 }
-console.log('✓ Міграцію mock-exam завершено');
+
+// Перевірка що таблиця реально створилась
+const check = await sql`
+  SELECT column_name, data_type
+  FROM information_schema.columns
+  WHERE table_name = 'pdr_mock_exam_attempts'
+  ORDER BY ordinal_position
+`;
+console.log('\n=== Колонки pdr_mock_exam_attempts ===');
+if (check.length === 0) {
+  console.log('⚠️  Таблиця НЕ створилась!');
+  process.exit(1);
+} else {
+  for (const col of check) console.log(`  ${col.column_name.padEnd(20)} ${col.data_type}`);
+}
+console.log('\n✓ Міграцію mock-exam завершено');
