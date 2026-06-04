@@ -1,9 +1,8 @@
 {
-  "last_processed_index": 100,
-  "last_batch_range": "1065..1114",
-  "next_batch_start": 100,
-  "next_batch_range": "1115..1164",
+  "last_processed_index": 200,
+  "last_batch_range": "1115..1214",
+  "next_batch_start": 200,
+  "next_batch_range": "1215..1264",
   "total_signs": 356,
-  "bugs_found_so_far": 12,
-  "uncertain_so_far": 10
+  "bugs_found_so_far": 28
 }
