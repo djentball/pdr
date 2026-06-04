@@ -1,8 +1,7 @@
 {
-  "last_processed_index": 200,
-  "last_batch_range": "1115..1214",
-  "next_batch_start": 200,
-  "next_batch_range": "1215..1264",
+  "status": "COMPLETE",
   "total_signs": 356,
-  "bugs_found_so_far": 28
+  "processed": 356,
+  "bugs_fixed_total": 46,
+  "uncertain": 23
 }
